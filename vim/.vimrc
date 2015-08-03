@@ -15,6 +15,9 @@ Plugin 'jnwhiteh/vim-golang'
 Plugin 'sjl/gundo.vim'
 Plugin 'saltstack/salt-vim'
 Plugin 'dag/vim-fish'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'rodjek/vim-puppet'
+Plugin 'michaeljsmith/vim-indent-object'
 
 call vundle#end()
 filetype plugin indent on
