@@ -1,0 +1,6 @@
+[extensions]
+color =
+pager =
+
+[pager]
+pager = LESS='FRX' less
