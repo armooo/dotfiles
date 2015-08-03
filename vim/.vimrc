@@ -1,5 +1,9 @@
 set nocompatible
 
+if $SHELL =~ 'bin/fish'
+    set shell=/bin/sh
+endif
+
 " start vundle junk
 filetype off
 set rtp+=~/.vim/vendored/vundle
