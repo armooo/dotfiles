@@ -3,4 +3,4 @@
 	url = https://github.com/gmarik/Vundle.vim.git
 [submodule "fish/.config/fish/virtualfish"]
 	path = fish/.config/fish/virtualfish
-	url = git@github.com:adambrenecki/virtualfish.git
+	url = https://github.com/adambrenecki/virtualfish.git
