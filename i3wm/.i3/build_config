@@ -1,0 +1,6 @@
+#!/bin/sh
+
+cat ~/.i3/config.main > ~/.i3/config
+if [ -e ~/.i3/config.$(hostname) ]; then
+    cat ~/.i3/config.$(hostname) >> ~/.i3/config
+fi
