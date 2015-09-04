@@ -149,6 +149,7 @@ bindsym XF86AudioNext exec "playerctl next"
 bindsym XF86AudioPrev exec "playerctl previous"
 
 bindsym $mod+p exec i3lock -d -i ~/.i3/screen.png
+exec xautolock -time 3 -locker 'i3lock -d -i ~/.i3/screen.png'
 
 bindsym $mod+shift+t append_layout .i3/3_term_up.json; exec gnome-terminal; exec gnome-terminal; exec gnome-terminal
 bindsym $mod+shift+b append_layout .i3/browser_term.json; exec google-chrome; exec gnome-terminal; exec gnome-terminal; exec gnome-terminal
