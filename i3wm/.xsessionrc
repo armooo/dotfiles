@@ -1,1 +1,3 @@
+#!/bin/sh
 ~/.i3/build_config
+export $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh,gpg)

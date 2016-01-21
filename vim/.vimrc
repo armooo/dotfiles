@@ -22,6 +22,8 @@ Plugin 'dag/vim-fish'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'rodjek/vim-puppet'
 Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'lepture/vim-jinja'
+Plugin 'rust-lang/rust.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -72,3 +74,7 @@ imap jj <Esc>
 
 " flake8
 autocmd BufWritePost *.py call Flake8()
+
+
+" rust
+let g:rustfmt_autosave = 1
