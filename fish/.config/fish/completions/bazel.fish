@@ -28,7 +28,7 @@ function __bazel_using_command
 end
 
 function __bazel_targets
-    command bazel query  --show_progress "kind(\"$argv[1] rule\", ...)"
+    command bazel query  "kind(\"$argv[1] rule\", ...)" ^ /dev/null
 end
 
 
@@ -47,6 +47,6 @@ complete -f -n '__bazel_needs_command' -c bazel -a shutdown -d 'Stops the bazel 
 complete -f -n '__bazel_needs_command' -c bazel -a test -d 'Builds and runs the specified test targets.'
 complete -f -n '__bazel_needs_command' -c bazel -a version -d 'Prints version information for bazel.'
 
-complete -f -n '__bazel_using_command build' -c bazel -a '(__bazel_targets ".*")'
+complete -f -n '__bazel_using_command build' -c bazel -a '(__bazel_targets ".*_bin|_.*test")'
 complete -f -n '__bazel_using_command test' -c bazel -a '(__bazel_targets ".*_test")'
-complete -f -n '__bazel_using_command run' -c bazel -a '(__bazel_targets ".*")'
+complete -f -n '__bazel_using_command run' -c bazel -a '(__bazel_targets ".*_bin|_.*test")'
