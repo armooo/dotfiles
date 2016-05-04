@@ -1,13 +1,3 @@
-function __find_workspace
-    set workspace $PWD
-    while true
-        if test -e $PWD/WORKSPACE
-            return $workspace
-        end
-        retirn $PWD
-    end
-end
-
 function __bazel_needs_command
     set cmd (commandline -opc)
     if [ (count $cmd) -eq 1 ]
@@ -28,7 +18,7 @@ function __bazel_using_command
 end
 
 function __bazel_targets
-    command bazel query  "kind(\"$argv[1] rule\", ...)" ^ /dev/null
+    command bazel query "kind(\"$argv[1] rule\", ...)" ^ /dev/null
 end
 
 
