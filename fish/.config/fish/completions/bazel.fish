@@ -18,7 +18,7 @@ function __bazel_using_command
 end
 
 function __bazel_targets
-    command bazel query "kind(\"$argv[1] rule\", ...)" ^ /dev/null
+    command bazel query "kind(\"$argv[1] rule\", ...)" --keep_going ^ /dev/null
 end
 
 
