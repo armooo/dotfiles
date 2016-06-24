@@ -52,10 +52,11 @@ autocmd InsertEnter * match WhiteSpaceEOL /\s\+\%#\@<!$/
 autocmd InsertLeave * match WhitespaceEOL /\s\+$/
 
 autocmd FileType make set noexpandtab
+autocmd BufRead,BufNewFile *.bzl set filetype=python
+autocmd BufRead,BufNewFile BUILD set filetype=python
 
 " leader stuff
 nnoremap <leader>p :set paste!<cr>
-nnoremap <leader>s :set spell!<cr>
 nnoremap <leader>s :set spell!<cr>
 nnoremap <leader>u :GundoToggle<CR>
 
