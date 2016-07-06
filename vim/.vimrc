@@ -54,6 +54,8 @@ autocmd InsertLeave * match WhitespaceEOL /\s\+$/
 autocmd FileType make set noexpandtab
 autocmd BufRead,BufNewFile *.bzl set filetype=python
 autocmd BufRead,BufNewFile BUILD set filetype=python
+autocmd BufRead,BufNewFile *.pyst set filetype=python
+
 
 " leader stuff
 nnoremap <leader>p :set paste!<cr>
