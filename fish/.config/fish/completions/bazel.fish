@@ -17,8 +17,39 @@ function __bazel_using_command
     return 1
 end
 
+function __bazel_workspace
+    set path (pwd)
+    while [ ! -f $path/WORKSPACE ]
+        if [ path = "/" ]
+            return 1
+        end
+        set path (string split --max 1 --right / $path)[1]
+    end
+    echo $path
+end
+
 function __bazel_targets
-    command bazel query "kind(\"$argv[1] rule\", ...)" --keep_going ^ /dev/null
+    # Not in a workspace
+    if [ ! __bazel_workspace ]
+        return 0
+    end
+    set target (commandline -op)[-1]
+    set workspace (__bazel_workspace)
+
+    if [ ! (string match --regex '^//' $target) ]
+        # Only deal with absolute targets
+        echo "//"
+    else if [ ! (string match "*:*" $target) ]
+        # Just find BUILD files in the workspace to start with
+        for t in (find $workspace -name BUILD | sed "s|$workspace/|//|; s|/BUILD|:|")
+            echo $t
+        end
+    else
+        # Ok now find the targets in this one BUILD file
+        set local_part (string split : $target)[1]
+        command bazel query "kind(\"$argv[1] rule\", $local_part:all)" --keep_going ^ /dev/null
+    end
+
 end
 
 
