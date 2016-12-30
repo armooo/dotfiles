@@ -41,12 +41,12 @@ function __bazel_targets
         echo "//"
     else if [ ! (string match "*:*" $target) ]
         # Just find BUILD files in the workspace to start with
-        for t in (find $workspace -name BUILD | sed "s|$workspace/|//|; s|/BUILD|:|")
-            echo $t
-        end
+        find $workspace -name BUILD | sed "s|$workspace/|//|; s|/BUILD|:|"
+        find $workspace -name BUILD | sed "s|$workspace/|//|; s|/BUILD|/...|"
     else
         # Ok now find the targets in this one BUILD file
         set local_part (string split : $target)[1]
+        echo ':all'
         command bazel query "kind(\"$argv[1] rule\", $local_part:all)" --keep_going ^ /dev/null
     end
 
