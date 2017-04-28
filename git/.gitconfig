@@ -1,5 +1,5 @@
 [user]
-	email = armooo@armooo.net
+	email = armooo@dropbox.com
 	name = Jason Michalski
 [color]
 	branch = true
@@ -15,3 +15,5 @@
 	default = nothing
 [http]
 	cookiefile = /home/armooo/.gitcookies
+[log]
+	follow = true

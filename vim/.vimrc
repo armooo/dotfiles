@@ -41,6 +41,8 @@ set tabstop=4
 set expandtab
 set scrolloff=5
 
+set modeline modeline
+
 set backspace=indent,eol,start
 set ruler
 set laststatus=1
