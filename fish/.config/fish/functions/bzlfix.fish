@@ -4,7 +4,7 @@ function bzlfix
     set targets (bazel query --keep_going "rdeps(..., $argv[1], 1) except (//analytics/...)" ^ /dev/null)
     for t in $targets
         echo "Fixing: " $t
-        ./bazel-bin/build_tools/bzl gen --skip-deps-generation $t
+        ./bazel-bin/build_tools/bzl gen $t
     end
     popd
 end
