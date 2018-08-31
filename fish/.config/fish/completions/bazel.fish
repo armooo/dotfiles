@@ -28,6 +28,19 @@ function __bazel_workspace
     echo $path
 end
 
+function __find_path
+    set workspace $argv[1]
+    set target $argv[2]
+    set path $workspace/(string replace // "" $target)
+    while [ ! -d $path ]
+        if [ path = "/" ]
+            return 1
+        end
+        set path (string split --max 1 --right / $path)[1]
+    end
+    echo $path
+end
+
 function __bazel_targets
     # Not in a workspace
     if [ ! __bazel_workspace ]
@@ -41,13 +54,16 @@ function __bazel_targets
         echo "//"
     else if [ ! (string match "*:*" $target) ]
         # Just find BUILD files in the workspace to start with
-        find $workspace -name BUILD | sed "s|$workspace/|//|; s|/BUILD|:|"
-        find $workspace -name BUILD | sed "s|$workspace/|//|; s|/BUILD|/...|"
+        for t in (find (__find_path $workspace $target) -maxdepth 2 -name BUILD | sed "s|$workspace/|//|; s|/BUILD||")
+            echo $t:
+            echo $t/...
+        end
     else
         # Ok now find the targets in this one BUILD file
         set local_part (string split : $target)[1]
         echo ':all'
         command bazel query "kind(\"$argv[1] rule\", $local_part:all)" --keep_going ^ /dev/null
+        echo $local_part:all
     end
 
 end
@@ -55,6 +71,7 @@ end
 
 complete -f -n '__bazel_needs_command' -c bazel -a analyze-profile -d 'Analyzes build profile data.'
 complete -f -n '__bazel_needs_command' -c bazel -a build -d 'Builds the specified targets.'
+complete -f -n '__bazel_needs_command' -c bazel -a coverage -d 'Runs tests and collects coverage'
 complete -f -n '__bazel_needs_command' -c bazel -a canonicalize-flags -d 'Canonicalizes a list of bazel options.'
 complete -f -n '__bazel_needs_command' -c bazel -a clean -d 'Removes output files and optionally stops the server.'
 complete -f -n '__bazel_needs_command' -c bazel -a dump -d 'Dumps the internal state of the bazel server process.'
@@ -68,6 +85,10 @@ complete -f -n '__bazel_needs_command' -c bazel -a shutdown -d 'Stops the bazel 
 complete -f -n '__bazel_needs_command' -c bazel -a test -d 'Builds and runs the specified test targets.'
 complete -f -n '__bazel_needs_command' -c bazel -a version -d 'Prints version information for bazel.'
 
-complete -f -n '__bazel_using_command build' -c bazel -a '(__bazel_targets ".*_bin|_.*test|.*binary")'
+complete -f -n '__bazel_using_command build' -c bazel -a '(__bazel_targets ".*")'
+complete -f -n '__bazel_using_command coverage' -c bazel -a '(__bazel_targets ".*_bin|_.*test|.*binary")'
 complete -f -n '__bazel_using_command test' -c bazel -a '(__bazel_targets ".*_test")'
 complete -f -n '__bazel_using_command run' -c bazel -a '(__bazel_targets ".*_bin|_.*test|.*binary")'
+
+complete -f -n '__bazel_needs_command' -c bzl -a tool -d 'Build and run a target with the CWD'
+complete -f -n '__bazel_using_command tool' -c bzl -a '(__bazel_targets ".*_bin|_.*test|.*binary")'
