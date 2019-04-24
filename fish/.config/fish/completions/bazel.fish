@@ -33,8 +33,10 @@ function __find_path
     set target $argv[2]
     set path $workspace/(string replace // "" $target)
     while [ ! -d $path ]
-        if [ path = "/" ]
-            return 1
+        if [ path = $workspace ]
+            echo $workspace
+            kj
+            return
         end
         set path (string split --max 1 --right / $path)[1]
     end
@@ -54,7 +56,7 @@ function __bazel_targets
         echo "//"
     else if [ ! (string match "*:*" $target) ]
         # Just find BUILD files in the workspace to start with
-        for t in (find (__find_path $workspace $target) -maxdepth 2 -name BUILD | sed "s|$workspace/|//|; s|/BUILD||")
+        for t in (find (__find_path $workspace $target) -maxdepth 3 -name BUILD | sed "s|$workspace/|//|; s|/BUILD||")
             echo $t:
             echo $t/...
         end
@@ -92,3 +94,6 @@ complete -f -n '__bazel_using_command run' -c bazel -a '(__bazel_targets ".*_bin
 
 complete -f -n '__bazel_needs_command' -c bzl -a tool -d 'Build and run a target with the CWD'
 complete -f -n '__bazel_using_command tool' -c bzl -a '(__bazel_targets ".*_bin|_.*test|.*binary")'
+
+complete -f -n '__bazel_needs_command' -c bzl -a gen -d 'Updates BUILD files with magic'
+complete -f -n '__bazel_using_command gen' -c bzl -a '(__bazel_targets ".*")'
