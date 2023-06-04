@@ -5,4 +5,4 @@ function my_key_bindings
 end
 set -g fish_key_bindings my_key_bindings
 
-eval (python ~/.config/fish/virtualfish/virtualfish/)
+eval (python3 ~/.config/fish/virtualfish/virtualfish/)
