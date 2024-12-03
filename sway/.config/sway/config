@@ -229,6 +229,6 @@ bindsym $mod+p [class="Signal"] scratchpad show
 
 bindsym $mod+Ctrl+l exec 'swaylock -f -c 000000 -i ~/.config/sway/lot.jpg'
 
-exec /usr/local/bin/sway-audio-idle-inhibit
+exec sway-audio-idle-inhibit
 
 include /etc/sway/config.d/*
