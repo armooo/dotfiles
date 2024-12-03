@@ -80,6 +80,4 @@ imap jj <Esc>
 " flake8
 autocmd BufWritePost *.py call Flake8()
 
-
-" rust
-let g:rustfmt_autosave = 1
+au BufWrite * :Autoformat
