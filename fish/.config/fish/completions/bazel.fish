@@ -64,7 +64,7 @@ function __bazel_targets
         # Ok now find the targets in this one BUILD file
         set local_part (string split : $target)[1]
         echo ':all'
-        command bazel query "kind(\"$argv[1] rule\", $local_part:all)" --keep_going ^ /dev/null
+        command bazel query "kind(\"$argv[1] rule\", $local_part:all)" --keep_going >&2 /dev/null
         echo $local_part:all
     end
 
