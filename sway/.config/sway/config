@@ -37,10 +37,10 @@ output * bg /home/armooo/.config/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # Example configuration:
 #
-exec swayidle -w \
-    timeout 300 'swaylock -f -c 000000 -i ~/.config/sway/lot.jpg' \
-    timeout 600 'systemctl hybrid-sleep' \
-    before-sleep 'swaylock -f -c 000000 -i ~/.config/sway/lot.jpg'
+#exec swayidle -w \
+#    timeout 300 'swaylock -f -c 000000 -i ~/.config/sway/lot.jpg' \
+#    timeout 600 'systemctl hybrid-sleep' \
+#    before-sleep 'swaylock -f -c 000000 -i ~/.config/sway/lot.jpg'
 
 
 ### Input configuration
