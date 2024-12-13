@@ -5,27 +5,27 @@ if $SHELL =~ 'bin/fish'
 endif
 
 " start vundle junk
-filetype off
-set rtp+=~/.vim/vendored/vundle
-call vundle#begin()
-
-
-Plugin 'gmarik/vundle'
-
-Plugin 'vim-scripts/desert.vim'
-Plugin 'nvie/vim-flake8'
-Plugin 'tpope/vim-fugitive'
-Plugin 'fatih/vim-go'
-Plugin 'sjl/gundo.vim'
-Plugin 'saltstack/salt-vim'
-Plugin 'dag/vim-fish'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'rodjek/vim-puppet'
-Plugin 'michaeljsmith/vim-indent-object'
-Plugin 'lepture/vim-jinja'
-Plugin 'rust-lang/rust.vim'
-
-call vundle#end()
+" filetype off
+" set rtp+=~/.vim/vendored/vundle
+" call vundle#begin()
+" 
+" 
+" Plugin 'gmarik/vundle'
+" 
+" Plugin 'vim-scripts/desert.vim'
+" Plugin 'nvie/vim-flake8'
+" Plugin 'tpope/vim-fugitive'
+" Plugin 'fatih/vim-go'
+" Plugin 'sjl/gundo.vim'
+" Plugin 'saltstack/salt-vim'
+" Plugin 'dag/vim-fish'
+" Plugin 'kchmck/vim-coffee-script'
+" Plugin 'rodjek/vim-puppet'
+" Plugin 'michaeljsmith/vim-indent-object'
+" Plugin 'lepture/vim-jinja'
+" Plugin 'rust-lang/rust.vim'
+" 
+" call vundle#end()
 filetype plugin indent on
 " end vundle junk
 
