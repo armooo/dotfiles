@@ -80,4 +80,4 @@ imap jj <Esc>
 " flake8
 autocmd BufWritePost *.py call Flake8()
 
-autocmd BufWrite * :Autoformat
+autocmd BufWrite * :Autoformat()
