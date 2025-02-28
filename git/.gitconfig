@@ -1,10 +1,10 @@
 [user]
-	email = armooo@armooo.new
-	name = Jason Michalski
+    email = armooo@armooo.net
+    name = Jason Michalski
 [color]
-	branch = true
-	diff = true
-	status = true
+    branch = true
+    diff = true
+    status = true
 [core]
     excludesfile = ~/.gitignore
 [rerere]
@@ -12,8 +12,8 @@
 [alias]
     graph = log --graph --full-history --all --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s"
 [push]
-	default = nothing
+    default = nothing
 [http]
-	cookiefile = /home/armooo/.gitcookies
+    cookiefile = /home/armooo/.gitcookies
 [log]
-	follow = true
+    follow = true
